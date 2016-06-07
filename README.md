@@ -12,7 +12,13 @@ $Env:PSModulePath
 [Environment]::GetEnvironmentVariable("PSModulePath")
 ```
 
-(You may have to create additional folders to create the full path.)
+Once you have installed the module to the module directory, use the command ```Import-Module SqlStig``` to import it into your session.
+
+You may also manually import the module using the command
+
+```
+Import-Module -Name %PathToModule%
+```
 
 *From PowerShell Gallery*
 
