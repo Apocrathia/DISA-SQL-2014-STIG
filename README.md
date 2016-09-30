@@ -42,7 +42,8 @@ Set-SQLInstanceStigItems -SqlAdministratorsName "<domain>\SQL Admins" `
                         -ServerAdminRoleMembers @("<domain>\SQL Admins") `
                         -DBCreatorRoleMembers @("<domain>\SQL Admins") `
                         -Verbose
-						
+```
+```
 Set-SQLDatabaseStigItems -ComputerName "<hostname>" `
                         -AllDatabases `
                         -OperatorToEmail "SQL Adminss" `
