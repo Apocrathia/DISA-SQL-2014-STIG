@@ -785,7 +785,7 @@ else {
 Write-Verbose -Message "Disabling forced encryption."
 return (Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\$($args[0])\MSSQLServer\SuperSocketNetLib" -Name "ForceEncryption" -Value $args[1] -PassThru:$args[2])
 }
-} -ArgumentList @($SqlConnection.ServiceInstanceId, $Enable, $PassThru) 
+} -ArgumentList @($SqlConnection.InstanceName, $Enable, $PassThru) 
 }
 catch [System.Exception] {
 Write-Verbose -Message $_.Exception.Message
@@ -1759,7 +1759,7 @@ if ($_.Exception.InnerException -ne $null) {
         }
         else {
             Write-Verbose -Message "Server already contains an audit specification named $AuditSpecificationName. Disabling the specification to modify it."
-            [Microsoft.SqlServer.Management.Smo.AuditSpecification]$ServerAuditSpecification = $SqlConnection.ServerAuditSpecifications |  Where-Object {$_.Name -ieq $AuditSpecificationName} | Select-Object -First 1
+            [Microsoft.SqlServer.Management.Smo.ServerAuditSpecification]$ServerAuditSpecification = $SqlConnection.ServerAuditSpecifications |  Where-Object {$_.Name -ieq $AuditSpecificationName} | Select-Object -First 1
             $ServerAuditSpecification.Disable()
         }
 
